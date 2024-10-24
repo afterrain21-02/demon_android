@@ -66,7 +66,7 @@
         android:layout_height="52dp"
         android:ems="10"
         android:hint="Введите цену"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.301"
