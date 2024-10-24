@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textViewPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Цена:"
@@ -20,7 +21,7 @@
         app:layout_constraintVertical_bias="0.049" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Скидка:"
@@ -33,7 +34,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Курс (Валюта):"
@@ -46,7 +47,7 @@
         app:layout_constraintVertical_bias="0.367" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextPrice"
         android:layout_width="358dp"
         android:layout_height="52dp"
         android:ems="10"
@@ -60,7 +61,7 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/seekBarSale"
         android:layout_width="264dp"
         android:layout_height="34dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +72,7 @@
         app:layout_constraintVertical_bias="0.268" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButtonDollar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$"
@@ -83,7 +84,7 @@
         app:layout_constraintVertical_bias="0.449" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/radioButtonEuro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="€"
@@ -95,7 +96,7 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/radioButtonPound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="£"
@@ -107,7 +108,7 @@
         app:layout_constraintVertical_bias="0.622" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ОК"
