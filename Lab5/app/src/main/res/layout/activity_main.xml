@@ -87,42 +87,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.268" />
 
-    <RadioButton
-        android:id="@+id/radioButtonDollar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
-
-    <RadioButton
-        android:id="@+id/radioButtonEuro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="€"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535" />
-
-    <RadioButton
-        android:id="@+id/radioButtonPound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="£"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
-
     <Button
         android:id="@+id/buttonResult"
         android:layout_width="wrap_content"
@@ -130,8 +94,39 @@
         android:text="ОК"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.74" />
+
+    <RadioGroup
+        android:id="@+id/RadioGroup"
+        android:layout_width="169dp"
+        android:layout_height="162dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544">
+
+        <RadioButton
+            android:id="@+id/radioButtonDollar"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="$" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEuro"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="€" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPound"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="£" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
