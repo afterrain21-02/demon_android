@@ -80,9 +80,9 @@ class MainActivity : AppCompatActivity() {
         val discountedPrice = ((PriceRub / 100.0) * (100.0 - sale))
 
         val convertedPrice = when (selectedCurrency) {
-            "Доллары" -> discountedPrice * 0.013
-            "Евро" -> discountedPrice * 0.012
-            "Фунты" -> discountedPrice * 0.010
+            "$" -> discountedPrice * 0.010
+            "€" -> discountedPrice * 0.0096
+            "£" -> discountedPrice * 0.0079
             else -> discountedPrice
         }
 
