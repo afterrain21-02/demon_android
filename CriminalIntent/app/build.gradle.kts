@@ -41,6 +41,7 @@ dependencies {
 
     implementation("androidx.room:room-ktx:2.5.0") // Используйте актуальную версию Room
     ksp("androidx.room:room-compiler:2.5.0") // Замените на ksp
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
