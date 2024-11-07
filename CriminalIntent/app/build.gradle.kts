@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("com.google.devtools.ksp") // Включите KSP здесь
 }
 
 android {
@@ -36,6 +38,9 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.room:room-ktx:2.5.0") // Используйте актуальную версию Room
+    ksp("androidx.room:room-compiler:2.5.0") // Замените на ksp
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
