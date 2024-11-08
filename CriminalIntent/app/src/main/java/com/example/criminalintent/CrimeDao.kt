@@ -1,3 +1,4 @@
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -9,8 +10,5 @@ interface CrimeDao {
     suspend fun insert(crime: Crime)
 
     @Query("SELECT * FROM crime")
-    suspend fun getAllCrimes(): Flow<List<Crime>>
-
-    @Query("DELETE FROM crime WHERE id = :crimeId")
-    suspend fun deleteCrimeById(crimeId: Long)
+    fun getAllCrimes(): LiveData<List<Crime>>
 }

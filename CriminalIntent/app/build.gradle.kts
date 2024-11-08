@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    id("com.google.devtools.ksp") // Включите KSP здесь
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -39,14 +39,24 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+    configurations.all {
+        resolutionStrategy.force("androidx.core:core:1.13.1")
+        resolutionStrategy.force("androidx.core:core-ktx:1.10.1")
+    }
+
+
+
 }
 
 dependencies {
 
-    implementation("androidx.room:room-ktx:2.5.0")
-    ksp("androidx.room:room-compiler:2.5.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation (libs.androidx.runtime.livedata)
+    annotationProcessor(libs.androidx.room.room.compiler)
+    ksp(libs.androidx.room.room.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
