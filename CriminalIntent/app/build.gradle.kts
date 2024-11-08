@@ -35,13 +35,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
 
-    implementation("androidx.room:room-ktx:2.5.0") // Используйте актуальную версию Room
-    ksp("androidx.room:room-compiler:2.5.0") // Замените на ksp
+    implementation("androidx.room:room-ktx:2.5.0")
+    ksp("androidx.room:room-compiler:2.5.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
