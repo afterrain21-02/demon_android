@@ -1,10 +1,15 @@
 package com.example.criminalintent
 
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,6 +19,16 @@ class MainActivity2 : AppCompatActivity() {
 
     private lateinit var buttonSave: Button
     private lateinit var editTextDate: EditText
+    private lateinit var imageViewAddPhoto: ImageView
+    private lateinit var imageViewShowPhoto: ImageView
+    private var selectedPhotoUri: Uri? = null
+
+    private val pickImageContract = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            selectedPhotoUri = it
+            imageViewShowPhoto.setImageURI(it)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +37,20 @@ class MainActivity2 : AppCompatActivity() {
 
         buttonSave = findViewById(R.id.buttonSave)
         editTextDate = findViewById(R.id.editTextDate)
+        imageViewAddPhoto = findViewById(R.id.imageViewAddPhoto)
+        imageViewShowPhoto = findViewById(R.id.imageViewShowPhoto)
 
         editTextDate.setOnClickListener {
             showDatePicker()
         }
+
+        imageViewAddPhoto.setOnClickListener {
+            onAddPhotoClick(it)
+        }
+    }
+
+    fun onAddPhotoClick(view: android.view.View) {
+        pickImageContract.launch("image/*")
     }
 
     private fun showDatePicker() {
