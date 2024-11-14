@@ -20,6 +20,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -34,49 +38,13 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var checkBoxSolved: CheckBox
     private var selectedPhotoUri: Uri? = null
 
-    private val pickImageContract = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            selectedPhotoUri = it
-            imageViewShowPhoto.setImageURI(it)
-        }
-    }
-
-    @SuppressLint("MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main2)
-
-        buttonSave = findViewById(R.id.buttonSave)
-        editTextDate = findViewById(R.id.editTextDate)
-        imageViewAddPhoto = findViewById(R.id.imageViewAddPhoto)
-        imageViewShowPhoto = findViewById(R.id.imageViewShowPhoto)
-        editTextName = findViewById(R.id.editTextName)
-        checkBoxSolved = findViewById(R.id.checkBoxSolved)
-
-        editTextDate.setOnClickListener {
-            showDatePicker()
-        }
-
-        imageViewAddPhoto.setOnClickListener {
-            onAddPhotoClick(it)
-        }
-
-        val db = AppDatabase.getDatabase(this)
-
-            buttonSave.setOnClickListener {
-            val crime = Crime(
-                title = editTextName.text.toString(),
-                date = convertDateToMillis(editTextDate.text.toString()),
-                isSolved = checkBoxSolved.isChecked,
-                photoPath = selectedPhotoUri?.toString()
-            )
-
-            Thread{
-                db.crimeDao().insert(crime)
+    private val pickImageContract =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                selectedPhotoUri = it
+                imageViewShowPhoto.setImageURI(it)
             }
         }
-    }
 
     fun onAddPhotoClick(view: android.view.View) {
         pickImageContract.launch("image/*")
@@ -109,4 +77,47 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
+
+    @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main2)
+
+        buttonSave = findViewById(R.id.buttonSave)
+        editTextDate = findViewById(R.id.editTextDate)
+        imageViewAddPhoto = findViewById(R.id.imageViewAddPhoto)
+        imageViewShowPhoto = findViewById(R.id.imageViewShowPhoto)
+        editTextName = findViewById(R.id.editTextName)
+        checkBoxSolved = findViewById(R.id.checkBoxSolved)
+
+        editTextDate.setOnClickListener {
+            showDatePicker()
+        }
+
+        imageViewAddPhoto.setOnClickListener {
+            onAddPhotoClick(it)
+        }
+
+        val db = AppDatabase.getDatabase(this)
+
+        buttonSave.setOnClickListener {
+            val crime = Crime(
+                title = editTextName.text.toString(),
+                date = convertDateToMillis(editTextDate.text.toString()),
+                isSolved = checkBoxSolved.isChecked,
+                photoPath = selectedPhotoUri?.toString()
+            )
+
+            CoroutineScope(Dispatchers.IO).launch {
+                db.crimeDao().insert(crime) // Сохраняем в БД
+
+                withContext(Dispatchers.Main) {
+                    // Закрываем текущую активность и возвращаемся в MainActivity
+                    finish()
+
+                }
+            }
+        }
+    }
 }
