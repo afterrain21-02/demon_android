@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CrimeDao {
     @Insert
-    suspend fun insert(crime: Crime)
+    fun insert(crime: Crime)
 
     @Query("SELECT * FROM crime")
     fun getAllCrimes(): LiveData<List<Crime>>

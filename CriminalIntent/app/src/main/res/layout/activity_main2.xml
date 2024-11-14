@@ -64,7 +64,7 @@
         app:srcCompat="@android:drawable/stat_sys_download" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxSolved"
         android:layout_width="159dp"
         android:layout_height="50dp"
         android:text="Solved"
@@ -79,7 +79,7 @@
         android:id="@+id/buttonSave"
         android:layout_width="152dp"
         android:layout_height="83dp"
-        android:text="Add"
+        android:text="Save"
         android:textAlignment="center"
         android:textColorLink="#000000"
         android:textSize="20sp"
