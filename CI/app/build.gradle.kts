@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.lifecycle:lifecycle-extensions:2.0.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
