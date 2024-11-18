@@ -1,6 +1,10 @@
+import com.android.build.gradle.internal.utils.isKotlinKaptPluginApplied
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("kotlin-kapt")
 }
 
 android {
@@ -39,6 +43,10 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.0.0")
     implementation("androidx.recyclerview:recyclerview:1.0.0")
+
+    implementation("androidx.room:room-runtime:2.1.0-alpha04")
+
+    kapt("androidx.room:room-compiler:2.1.0-alpha04")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
