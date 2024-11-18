@@ -9,4 +9,6 @@ import com.example.ci.Crime
     version=1)
 @TypeConverters(CrimeTypeConverters::class)
 abstract class CrimeDatabase : RoomDatabase() {
+
+    abstract fun crimeDao(): CrimeDao
 }
