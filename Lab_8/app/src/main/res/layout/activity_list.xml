@@ -13,5 +13,6 @@
         android:layout_height="83dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/ic_add"
+        android:contentDescription="Add a new task"/>
 </RelativeLayout>
