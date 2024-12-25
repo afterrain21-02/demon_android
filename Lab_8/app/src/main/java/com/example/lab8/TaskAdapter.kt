@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lab8.data.Task
 
 class TaskAdapter(private val onDeleteClickListener: (Task) -> Unit) :
-    ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback()) {
+    ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
