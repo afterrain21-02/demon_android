@@ -56,5 +56,5 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1") // KTX для удобства работы с Room
 
 
-
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
 }

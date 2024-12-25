@@ -16,31 +16,27 @@ class TaskAdapter(private val onDeleteClickListener: (Task) -> Unit) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_task, parent, false)
-
         return TaskViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = getItem(position)
-
         holder.bind(task)
 
+        // Устанавливаем обработчик клика для удаления задачи (или другого действия)
         holder.itemView.setOnClickListener { onDeleteClickListener(task) }
-
-        // Implement swipe to delete functionality here.
-        // This can be done using ItemTouchHelper or similar approach.
     }
 
     class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(task: Task) {
             itemView.findViewById<TextView>(R.id.task_description).text = task.description
 
-            // Set color based on priority:
+            // Устанавливаем цвет фона в зависимости от приоритета:
             itemView.setBackgroundColor(when (task.priority) {
-                1 -> Color.GREEN // Low priority - Green color.
-                2 -> Color.YELLOW // Medium priority - Yellow color.
-                3 -> Color.RED // High priority - Red color.
-                else -> Color.WHITE // Default color.
+                1 -> Color.GREEN // Низкий приоритет - зеленый цвет.
+                2 -> Color.YELLOW // Средний приоритет - желтый цвет.
+                3 -> Color.RED // Высокий приоритет - красный цвет.
+                else -> Color.WHITE // Цвет по умолчанию.
             })
         }
     }
