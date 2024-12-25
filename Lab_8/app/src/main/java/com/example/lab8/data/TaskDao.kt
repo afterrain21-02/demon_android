@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
 interface TaskDao {
-    @Insert
-    suspend fun insert(task: Task)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(task: Task): Long
 
     @Delete
     suspend fun delete(task: Task)
