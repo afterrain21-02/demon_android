@@ -1,5 +1,6 @@
 package com.example.lab9.response
 
+import com.example.lab9.model.Movie
 import com.google.gson.annotations.SerializedName
 
 data class ApiResponse(
