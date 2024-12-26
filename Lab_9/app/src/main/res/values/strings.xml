@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Lab9</string>
+    <string name="movie_poster">Описание постера фильма</string>
 </resources>
